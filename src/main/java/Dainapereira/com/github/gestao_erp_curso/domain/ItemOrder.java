@@ -2,6 +2,7 @@ package Dainapereira.com.github.gestao_erp_curso.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.criteria.Order;
@@ -20,14 +21,13 @@ import lombok.Setter;
 public class ItemOrder {
 
   @JsonIgnore
-  @Embeddable
-
+  @EmbeddedId
   private ItemOrderPk id = new ItemOrderPk();
   private Double quantity;
   private Double price;
 
   public ItemOrder(Order order,Product product,Double quantity,Double price){
-    this.id.setOrder(order);
+    this.id.setOrders(order);
     this.id.setProduct(product);
     this.quantity = quantity;
     this.price = price;
